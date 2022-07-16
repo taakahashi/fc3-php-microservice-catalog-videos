@@ -1,0 +1,15 @@
+{
+    "name": "taakahashi/app-php-catalog-video",
+    "authors": [
+        {
+            "name": "Gabriel Takahashi",
+            "email": "taakahashi@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Core\\": "src/Core"
+        }
+    },
+    "require": {}
+}
