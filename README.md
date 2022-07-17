@@ -27,6 +27,12 @@ Após isso rodar o comando: `composer dump-autoload`
 },
 ```
 
+### Instalar PHPUnit e Mockery
+```
+composer require --dev phpunit/phpunit
+composer require --dev mockery/mockery
+```
+
 
 # Commands Docker
 ```

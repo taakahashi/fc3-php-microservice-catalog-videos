@@ -1,7 +1,7 @@
 <?php
 require_once '../vendor/autoload.php';
 
-use Core\Test;
+use Core\Example;
 
-$t = new Test();
+$t = new Example();
 var_dump($t->foo());
