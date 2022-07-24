@@ -11,7 +11,6 @@ class CategoryTest extends TestCase
     public function testAttributes()
     {
         $category = new Category(
-            id: '',
             name: 'Terror',
             description: 'Desc',
             isActive: true
@@ -19,8 +18,35 @@ class CategoryTest extends TestCase
 
         self::assertEquals('Terror', $category->name);
         self::assertEquals('Desc', $category->description);
-        self::assertEquals(true, $category->isActive);
+        self::assertTrue($category->isActive);
+    }
 
+    public function testActivated()
+    {
+        $category = new Category(
+            name: 'Terror',
+            isActive: false
+        );
+
+        self::assertFalse($category->isActive);
+
+        $category->activate();
+
+        self::assertTrue($category->isActive);
+    }
+
+    public function testDisabled()
+    {
+        $category = new Category(
+            name: 'Terror',
+            isActive: true
+        );
+
+        self::assertTrue($category->isActive);
+
+        $category->disable();
+
+        self::assertFalse($category->isActive);
     }
 
 }
