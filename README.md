@@ -39,3 +39,15 @@ composer require --dev mockery/mockery
 docker-compose up -d
 docker-compose exec app bash
 ```
+
+```
+--- Editar o arquivo abaixo
+nano ~/.bashrc
+
+--- Escrever o comando abaixo ao final do arquivo
+alias unit='$(pwd)/vendor/bin/phpunit'
+Ctrl+X
+
+--- Rodar o .profile
+sh .profile
+```
