@@ -33,13 +33,7 @@ composer require --dev phpunit/phpunit
 composer require --dev mockery/mockery
 ```
 
-
-# Commands Docker
-```
-docker-compose up -d
-docker-compose exec app bash
-```
-
+### Criar alias para rodar testes com PHPUnit
 ```
 --- Editar o arquivo abaixo
 nano ~/.bashrc
@@ -50,4 +44,11 @@ Ctrl+X
 
 --- Rodar o .profile
 sh .profile
+```
+
+
+# Commands Docker
+```
+docker-compose up -d
+docker-compose exec app bash
 ```
