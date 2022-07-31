@@ -75,7 +75,7 @@ class CategoryTest extends TestCase
     {
         try {
             $category = new Category(
-                name: 'Te',
+                name: 'T',
                 description: 'Desc Terror'
             );
 
