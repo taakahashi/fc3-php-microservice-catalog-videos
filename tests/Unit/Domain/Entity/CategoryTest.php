@@ -83,8 +83,22 @@ class CategoryTest extends TestCase
         } catch (Throwable $throwable) {
             static::assertInstanceOf(EntityValidationException::class, $throwable);
         }
+    }
 
+    public function testExceptionDescription()
+    {
+        try {
+            $category = new Category(
+                name: 'T',
+                description: 'EntityValidationExceptionEntityValidationExceptionEntityValidationExceptionEntityValidationExceptionEntityValidationExceptionEntityValidationExceptionEntityValidationExceptionEntityValidationExceptionEntityValidationExceptionEntityValidationExceptionEntityValidationExceptionEntityValidationException'
+            );
 
+            var_dump($category->description);
+
+            static::fail();
+        } catch (Throwable $throwable) {
+            static::assertInstanceOf(EntityValidationException::class, $throwable);
+        }
     }
 
 }

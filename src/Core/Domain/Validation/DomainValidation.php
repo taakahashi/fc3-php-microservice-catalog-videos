@@ -44,8 +44,9 @@ class DomainValidation
      */
     public static function strCanNullAndMaxLength(string $value = '', string $exceptMessage = '', int $length = 255): void
     {
-        if (!empty($value) && strlen($value) > $length)
+        if (!empty($value) && strlen($value) > $length) {
             throw new EntityValidationException($exceptMessage ?? "The value must not be greater than {$length} characters");
+        }
     }
 
 
