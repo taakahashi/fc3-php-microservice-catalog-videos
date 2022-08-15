@@ -27,10 +27,12 @@ Após isso rodar o comando: `composer dump-autoload`
 },
 ```
 
-### Instalar PHPUnit e Mockery
+### Instalar pelo Composer
 ```
 composer require --dev phpunit/phpunit
 composer require --dev mockery/mockery
+
+composer require ramsey/uuid
 ```
 
 ### Criar alias para rodar testes com PHPUnit
