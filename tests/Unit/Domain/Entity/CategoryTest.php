@@ -19,7 +19,9 @@ class CategoryTest extends TestCase
             isActive: true
         );
 
+        var_dump($category);
         self::assertNotEmpty($category->id);
+        self::assertNotEmpty($category->createdAt());
         self::assertEquals('Terror', $category->name);
         self::assertEquals('Desc', $category->description);
         self::assertTrue($category->isActive);
@@ -61,7 +63,8 @@ class CategoryTest extends TestCase
             id: $uuid,
             name: 'Terror',
             description: 'Desc Terror',
-            isActive: true
+            isActive: true,
+            createdAt: '2022-01-01 12:12:12'
         );
 
         $category->update(
