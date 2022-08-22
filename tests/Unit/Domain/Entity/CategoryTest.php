@@ -19,7 +19,7 @@ class CategoryTest extends TestCase
             isActive: true
         );
 
-        var_dump($category);
+        //var_dump($category);
         self::assertNotEmpty($category->id);
         self::assertNotEmpty($category->createdAt());
         self::assertEquals('Terror', $category->name);
