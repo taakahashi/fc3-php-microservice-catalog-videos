@@ -2,6 +2,7 @@
 
 namespace Tests\Unit\UseCase\Category;
 
+use Core\UseCase\Category\CreateCategoryUseCase;
 use Ramsey\Uuid\Uuid;
 use stdClass;
 use Mockery;
@@ -42,6 +43,16 @@ class ListCategoryUseCaseTest extends TestCase
         $this->assertInstanceOf(CategoryListOutputDTO::class, $responseUseCase);
         $this->assertEquals($categoryName, $responseUseCase->name);
         $this->assertEquals($uuid, $responseUseCase->id);
+
+        //Spies
+        $this->spy = Mockery::spy(stdClass::class, CategoryRepositoryInterface::class);
+        $this->spy->shouldReceive('findById')->andReturn($this->mockEntity);
+
+        $useCase = new ListCategoryUseCase($this->spy);
+        $useCase->execute($this->mockInputDTO);
+
+        $this->spy->shouldHaveReceived('findById');
+        //Spies
 
         Mockery::close();
     }
