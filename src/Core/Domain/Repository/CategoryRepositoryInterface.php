@@ -12,7 +12,7 @@ interface CategoryRepositoryInterface
 
     public function delete(string $id): bool;
 
-    public function findById(string $id): array;
+    public function findById(string $id): Category;
 
     public function findAll(string $filter = '', $order = 'DESC'): array;
 
