@@ -2,7 +2,6 @@
 
 namespace Tests\Unit\UseCase\Category;
 
-use Core\UseCase\Category\CreateCategoryUseCase;
 use Ramsey\Uuid\Uuid;
 use stdClass;
 use Mockery;
