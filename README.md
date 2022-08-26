@@ -45,7 +45,7 @@ alias unit='$(pwd)/vendor/bin/phpunit'
 Ctrl+X
 
 --- Rodar o .profile
-sh .profile
+sh ~/.profile
 ```
 
 

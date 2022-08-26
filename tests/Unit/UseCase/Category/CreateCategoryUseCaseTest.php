@@ -3,7 +3,6 @@
 namespace Tests\Unit\UseCase\Category;
 
 use stdClass;
-use Ramsey\Uuid\Uuid;
 use Mockery;
 use PHPUnit\Framework\TestCase;
 use Core\Domain\Entity\Category;
@@ -37,6 +36,16 @@ class CreateCategoryUseCaseTest extends TestCase
         $this->assertInstanceOf(CategoryCreateOutputDTO::class, $responseUseCase);
         $this->assertEquals($categoryName, $responseUseCase->name);
         $this->assertEquals('', $responseUseCase->description);
+
+        //Spies
+        $this->spy = Mockery::spy(stdClass::class, CategoryRepositoryInterface::class);
+        $this->spy->shouldReceive('insert')->andReturn($this->mockEntity);
+
+        $useCase = new CreateCategoryUseCase($this->spy);
+        $useCase->execute($this->mockInputDTO);
+
+        $this->spy->shouldHaveReceived('insert');
+        //Spies
 
         Mockery::close();
     }
