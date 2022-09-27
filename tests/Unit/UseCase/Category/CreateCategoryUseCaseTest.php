@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit\UseCase\Category;
+namespace Unit\UseCase\Category;
 
 use stdClass;
 use Mockery;
