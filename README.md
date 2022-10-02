@@ -46,6 +46,9 @@ Ctrl+X
 
 --- Rodar o .profile
 sh ~/.profile
+
+--- Rodar o .bashrc
+source ~/.bashrc
 ```
 
 

@@ -8,8 +8,8 @@ use Ramsey\Uuid\Uuid;
 use PHPUnit\Framework\TestCase;
 use Core\Domain\Entity\Category;
 use Core\Domain\Repository\CategoryRepositoryInterface;
-use Core\UseCase\DTO\Category\CategoryUpdateInputDTO;
-use Core\UseCase\DTO\Category\CategoryUpdateOutputDTO;
+use Core\UseCase\DTO\Category\UpdateCategory\CategoryUpdateInputDTO;
+use Core\UseCase\DTO\Category\UpdateCategory\CategoryUpdateOutputDTO;
 use Core\UseCase\Category\UpdateCategoryUseCase;
 
 class UpdateCategoryUseCaseTest extends TestCase
@@ -24,7 +24,7 @@ class UpdateCategoryUseCaseTest extends TestCase
             $uuid, $categoryName, $categoryDesc
         ]);
 
-        $this->mockRepository->shouldReceive('update');
+        $this->mockEntity->shouldReceive('update');
 
         $this->mockRepository = Mockery::mock(stdClass::class, CategoryRepositoryInterface::class);
         $this->mockRepository->shouldReceive('findById')->andReturn($this->mockEntity);
@@ -36,9 +36,23 @@ class UpdateCategoryUseCaseTest extends TestCase
         ]);
 
         $useCase = new UpdateCategoryUseCase($this->mockRepository);
-        $responseUseCase = $useCase->execute();
+        $responseUseCase = $useCase->execute($this->mockInputDTO);
 
-        self::assertInstanceOf(CategoryUpdateOutputDTO::class);
+        self::assertInstanceOf(CategoryUpdateOutputDTO::class, $responseUseCase);
+
+        //Spies
+        $this->spy = Mockery::spy(stdClass::class, CategoryRepositoryInterface::class);
+        $this->spy->shouldReceive('findById')->andReturn($this->mockEntity);
+        $this->spy->shouldReceive('update')->andReturn($this->mockEntity);
+
+        $useCase = new UpdateCategoryUseCase($this->spy);
+        $useCase->execute($this->mockInputDTO);
+
+        $this->spy->shouldHaveReceived('findById');
+        $this->spy->shouldHaveReceived('update');
+        //Spies
+
+        Mockery::close();
     }
 
 }
