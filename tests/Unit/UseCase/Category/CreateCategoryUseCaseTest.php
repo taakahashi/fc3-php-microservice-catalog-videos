@@ -1,14 +1,14 @@
 <?php
 
-namespace Unit\UseCase\Category;
+namespace Unit\UseCase\Category\CreateCategory;
 
 use stdClass;
 use Mockery;
 use PHPUnit\Framework\TestCase;
 use Core\Domain\Entity\Category;
 use Core\Domain\Repository\CategoryRepositoryInterface;
-use Core\UseCase\DTO\Category\CategoryCreateInputDTO;
-use Core\UseCase\DTO\Category\CategoryCreateOutputDTO;
+use Core\UseCase\DTO\Category\CreateCategory\CategoryCreateInputDTO;
+use Core\UseCase\DTO\Category\CreateCategory\CategoryCreateOutputDTO;
 use Core\UseCase\Category\CreateCategoryUseCase;
 
 class CreateCategoryUseCaseTest extends TestCase
@@ -22,6 +22,8 @@ class CreateCategoryUseCaseTest extends TestCase
             '',
             $categoryName
         ]);
+
+        $this->mockEntity->shouldReceive('createdAt')->andReturn(date('Y-m-d'));
 
         $this->mockRepository = Mockery::mock(stdClass::class, CategoryRepositoryInterface::class);
         $this->mockRepository->shouldReceive('insert')->andReturn($this->mockEntity);
